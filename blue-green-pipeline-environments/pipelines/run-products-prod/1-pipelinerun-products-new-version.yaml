@@ -1,10 +1,11 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: shop-products-new-version-
+  generateName: shop-products-new-version-prod-
+  namespace: user1-continuous-deployment
 spec:
   pipelineRef:
-    name: pipeline-blue-green-environments    
+    name: pipeline-blue-green-environments
   params:
   - name: APP
     value: products
@@ -13,11 +14,11 @@ spec:
   - name: STEP
     value: "new-version"
   - name: REPLICA_COUNT
-    value: "2"   
+    value: "4"
   - name: NAMESPACE
     value: "user1-prod"
   - name: REPO_FULL_NAME
-    value: davidseve/cloud-native-deployment-strategies
+    value: jerosa/cloud-native-deployment-strategies
   - name: ENV
     value: prod
   workspaces:

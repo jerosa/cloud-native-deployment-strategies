@@ -2,9 +2,10 @@ apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
   generateName: shop-products-switch-
+  namespace: user1-continuous-deployment
 spec:
   pipelineRef:
-    name: pipeline-blue-green-environments   
+    name: pipeline-blue-green-environments
   params:
   - name: APP
     value: products
@@ -15,7 +16,7 @@ spec:
   - name: NAMESPACE
     value: "user1-stage"
   - name: REPO_FULL_NAME
-    value: davidseve/cloud-native-deployment-strategies
+    value: jerosa/cloud-native-deployment-strategies
   workspaces:
   - name: app-source
     persistentVolumeClaim:
